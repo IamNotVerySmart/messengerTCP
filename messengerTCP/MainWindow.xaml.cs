@@ -20,17 +20,7 @@ namespace messengerTCP
 
             tcpClientApp = new TcpClientApp();
         }
-        private async void SendButton_Click(object sender, RoutedEventArgs e)
-        {
-            //string message = MessageTextBox.Text;
-            //await tcpClientApp.SendMessageAsync(message);
-            //MessageTextBox.Clear();
-            if (TextInput.Text.Length > 0)
-            {
-                Chat.Text += TextInput.Text + "\n";
-                TextInput.Text = "";
-            }
-        }
+        
     }
 }
 

@@ -1,4 +1,7 @@
 ﻿using System.Windows;
+using System.Net.Sockets;
+using System.Text;
+using System.Net;
 
 namespace messengerTCP
 {
@@ -7,20 +10,44 @@ namespace messengerTCP
     /// </summary>
     public partial class MainWindow : Window
     {
-        private TcpClientApp tcpClientApp;
-
         public MainWindow()
         {
             InitializeComponent();
 
-            //string a = Dns.GetHostName();
 
-            //value1.Content = a;
-            //value2.Content = Dns.GetHostEntry(a);
-
-            tcpClientApp = new TcpClientApp();
         }
-        
+
+        TcpClient client;
+        string ip = "127.0.0.1";
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnConnect(object sender, RoutedEventArgs e)
+        {
+            ChatBox.Text = "Connecting to server...";
+            client = new TcpClient(ip, int.Parse(PortNumber.Text));
+            if(client.Connected)
+            {
+                ChatBox.Text = "Connected to server";
+            }
+        }
+
+        private void btnSend(object sender, RoutedEventArgs e)
+        {
+
+            NetworkStream networkStream = client.GetStream();
+            byte[] sendBuffer = Encoding.ASCII.GetBytes(ChatInput.Text);
+            networkStream.Write(sendBuffer, 0, sendBuffer.Length);
+        }
+
+        private void btnDisconnect(object sender, RoutedEventArgs e)
+        {
+            client.Close();
+            ChatBox.Text = "Disconnected from server";
+        }
     }
 }
 

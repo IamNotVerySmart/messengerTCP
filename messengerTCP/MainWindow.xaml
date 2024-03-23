@@ -5,35 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:messengerTCP"
         mc:Ignorable="d"
-        Title="TCP communicator" Height="450" Width="800">
-    <GroupBox>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Column="0" Grid.Row="1">
-                <Label FontSize="16" Content="User:"/>
-            </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="1">
-                <TextBox FontSize="22" TextWrapping="Wrap" Text="TextBox" MinWidth="100"/>
-            </StackPanel>
-            <StackPanel Grid.ColumnSpan="2" Grid.Column="0"  Grid.Row="2">
-                <Button FontSize="16" Content="Connect"/>
-            </StackPanel>
+        FontSize="16"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="CanMinimize"
+        Title="TCP communicator">
+    
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <Label Content="User:"/>
+            <Label Content="Port:"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            <TextBox Name="Username" FontSize="22" TextWrapping="Wrap" Text="TextBox" MinWidth="100"/>
+            <TextBox Name="PortNumber" FontSize="22" TextWrapping="Wrap" Text="12345" MinWidth="100"/>
+        </StackPanel>
+        <StackPanel Grid.ColumnSpan="2" Grid.Column="0"  Grid.Row="1">
+            <Button Click="btnConnect" Content="Connect"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <TextBlock Name="ChatBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="300" Width="640" Background="LightGray"/>
+            <WrapPanel>
+                <TextBox Name="ChatInput" Width="550">
+            
+                </TextBox>
+                <Button Click="btnSend" Content="Send" Width="90"/>
+            </WrapPanel>
+        </StackPanel>
             <!--
-            <TextBlock FontSize="16" HorizontalAlignment="Left" Margin="213,23,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="319" Width="565" Background="LightGray"/>
             <TextBox FontSize="16" HorizontalAlignment="Left" Margin="213,347,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="434"/>
             <Label FontSize="16" Content="Status" HorizontalAlignment="Left" Margin="19,103,0,0" VerticalAlignment="Top" Width="56"/>
             <Label FontSize="16" Content="Disconnected" HorizontalAlignment="Left" Margin="80,103,0,0" VerticalAlignment="Top" Background="Red"/>
             <Button FontSize="16" Content="Send" HorizontalAlignment="Left" Margin="652,347,0,0" VerticalAlignment="Top" Width="126"/>
             -->
         </Grid>
-    </GroupBox>
+    
 </Window>

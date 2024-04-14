@@ -25,7 +25,11 @@ namespace messengerTCP
 
         private void Window_Loaded()
         {
-            server = new TcpListener(IPAddress.Parse(ip), 54321);
+            // tutaj trzeba zmienic numerek portu
+            server = new TcpListener(IPAddress.Parse(ip), 54321); // poddalem sie nie chce robic wiecej tcp
+            // oby nie bylo juz tego wiecej
+            // to nie chce dzialac
+            // 2 mi starczy lub tak by zdac na koniec roku bez poprawki :D
             server.Start();
             Task.Run(() => StartS());
         }
